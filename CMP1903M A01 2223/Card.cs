@@ -10,17 +10,7 @@ namespace CMP1903M_A01_2223
     {
         public string Value { get; set; }
         public string Suit { get; set; }
-
-        //public Card(string rank, string suit)
-        //{
-        //    Value = Value;
-       //     Suit = suit;
-        //}
-
-        //public override string ToString()
-        //{
-        //    return $"{Value} of {Suit}";
-        //}
+  
     
     //Base for the Card class.
     //Value: numbers 1 - 13
