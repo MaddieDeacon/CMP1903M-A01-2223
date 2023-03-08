@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CMP1903M_A01_2223
 {
-    public class Pack
+    class Pack
     {
-        public List<Card> cards = new List<Card>();
+        static List<Card> cards;
         public int currentCardIndex = 0;
 
         public Pack()
         {
             //Initialise the card pack here
+            cards = new List<Card>();
             string[] Values = { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King" };
             string[] suits = { "Hearts", "Diamonds", "Clubs", "Spades" };
 
@@ -21,8 +23,7 @@ namespace CMP1903M_A01_2223
             {
                 foreach (string Value in Values)
                 {
-                    Card card = new Card(Value, suit);
-                    cards.Add(card);
+                    cards.Add(new Card { Suit = suit, Value = Value });
                 }
             }
         }
@@ -89,45 +90,19 @@ namespace CMP1903M_A01_2223
 
             return true;
         }
-
-
-
-
-            public Card DealCard()
+        public static Card DealCard()
         {
             //Deals one card
-            if (currentCardIndex >= cards.Count)
-            {
-                return null;
-            }
-
-            Card card = cards[currentCardIndex];
-            currentCardIndex++;
-
-            return card;
+            return cards.First();
         }
 
-        public List<Card> DealCards(int amount)
+        public static List<Card> DealCards(int amount)
         {
+            //Deals the number of cards specified by 'amount'
             List<Card> dealtCards = new List<Card>();
-
-            for (int i = 0; i < amount; i++)
-            {
-                Card card = DealCard();
-
-                if (card == null)
-                {
-                    break;
-                }
-
-                dealtCards.Add(card);
-            }
-
+            IEnumerable<Card> EnumerblesCards = cards.Take(amount);
+            dealtCards = EnumerblesCards.ToList();
             return dealtCards;
         }
     }
-
-
-        //Deals the number of cards specified by 'amount'
-
-
+}

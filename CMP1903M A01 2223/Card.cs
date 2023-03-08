@@ -6,21 +6,21 @@ using System.Threading.Tasks;
 
 namespace CMP1903M_A01_2223
 {
-   public class Card
+   class Card
     {
-        public string Value { get; private set; }
-        public string Suit { get; private set; }
+        public string Value { get; set; }
+        public string Suit { get; set; }
 
-        public Card(string rank, string suit)
-        {
-            Value = Value;
-            Suit = suit;
-        }
+        //public Card(string rank, string suit)
+        //{
+        //    Value = Value;
+       //     Suit = suit;
+        //}
 
-        public override string ToString()
-        {
-            return $"{Value} of {Suit}";
-        }
+        //public override string ToString()
+        //{
+        //    return $"{Value} of {Suit}";
+        //}
     
     //Base for the Card class.
     //Value: numbers 1 - 13
